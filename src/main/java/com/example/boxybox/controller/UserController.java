@@ -9,18 +9,34 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+/**
+ *
+ * @author Artsiom Andryianau
+ *
+ */
 @Controller
 @RequestMapping("/user")
 @PreAuthorize("hasAuthority('ADMIN')")
 public class UserController {
+
+    /**
+     * autowired param user repo
+     */
     @Autowired
     private UserRepo userRepo;
 
+
+    /**
+     *
+     * @param model - model param
+     * @return userList template
+     */
     @GetMapping
     public String userList(Model model) {
         model.addAttribute("users", userRepo.findAll());
@@ -28,6 +44,13 @@ public class UserController {
         return "userList";
     }
 
+
+    /**
+     *
+     * @param user - user edition param
+     * @param model - model param
+     * @return userEdit template
+     */
     @GetMapping("{user}")
     public String userEditForm(@PathVariable User user, Model model) {
         model.addAttribute("user", user);
@@ -36,6 +59,31 @@ public class UserController {
         return "userEdit";
     }
 
+
+    /**
+     *
+     * @param id - id param of delivery
+     * @param model - model param
+     * @return user template
+     */
+    @Transactional
+    @PostMapping("/delete1/{id}")
+    public String deleteUser(@PathVariable("id") Long  id,
+                                 Map<String, Object> model) {
+
+        userRepo.deleteById(id);
+
+        return "redirect:/userList";
+    }
+
+
+    /**
+     *
+     * @param username - new username
+     * @param form - form param
+     * @param user - user object
+     * @return user template
+     */
     @PostMapping
     public String userSave(
             @RequestParam String username,
