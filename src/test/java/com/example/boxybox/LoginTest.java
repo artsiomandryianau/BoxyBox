@@ -24,7 +24,7 @@ public class LoginTest {
     private MockMvc mockMvc;
 
     @Test
-    public void contextLoads() throws Exception {
+    public void contextLoad() throws Exception {
         this.mockMvc.perform(get("/"))
                 .andDo(print())
                 .andExpect(status().isOk())
