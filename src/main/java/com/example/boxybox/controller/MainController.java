@@ -31,35 +31,18 @@ import java.util.UUID;
 public class MainController {
 
 
-    /**
-     * autowired bean
-     */
     @Autowired
     private DeliveryRepo deliveryRepo;
 
-    /**
-     * path for uploading
-     */
     @Value("${upload.path}")
     private String uploadpath;
 
 
-    /**
-     *
-     * @param model - model param
-     * @return - greeting template
-     */
     @GetMapping("/")
     public String greeting(Map<String,Object> model){
         return "greeting";
     }
 
-    /**
-     *
-     *
-     * @param model - model param
-     * @return - main tepmlate
-     */
     @GetMapping("/main")
     public String main( Model model) {
         Iterable<Delivery> deliveries = deliveryRepo.findAll();
@@ -71,21 +54,6 @@ public class MainController {
     }
 
 
-    /**
-     *
-     * @param nameOfCommodity - commodity name
-     * @param dateOfDelivery - date of delivery
-     * @param addressCity - address part
-     * @param addressStreet - address part
-     * @param addressNumberOfBuilding - address part
-     * @param addressNumberOfApartament - address part
-     * @param commodityPrise - prise of commodity
-     * @param user - user
-     * @param model - model param
-     * @param file - file
-     * @return - main template
-     * @throws IOException - exceprtion
-     */
     @PostMapping("/main")
     public String add(@RequestParam String nameOfCommodity,
                       @RequestParam String dateOfDelivery,
@@ -128,12 +96,6 @@ public class MainController {
         return "main";
     }
 
-    /**
-     *
-     * @param id - id of delivery
-     * @param model - model
-     * @return main page
-     */
     @Transactional
     @PostMapping("/delete/{id}")
     public String deleteDelivery(@PathVariable("id") Integer  id,
@@ -144,14 +106,6 @@ public class MainController {
         return "redirect:/main";
     }
 
-
-    /**
-     *
-     * @param id - id of delivery
-     * @param newDate - new date of delivery
-     * @param model - model param
-     * @return main template
-     */
     @Transactional
     @PostMapping("/editD/{id}")
     public String editDateOfDelivery(@PathVariable("id") Integer  id,
@@ -164,13 +118,6 @@ public class MainController {
         return "redirect:/main";
     }
 
-    /**
-     *
-     * @param id - id of delivery
-     * @param newAddress - new address of delivery
-     * @param model - model param
-     * @return main template
-     */
     @Transactional
     @PostMapping("/editA/{id}")
     public String editAddressOfDelivery(@PathVariable("id") Integer  id,

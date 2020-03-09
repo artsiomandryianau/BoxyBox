@@ -19,29 +19,14 @@ import java.util.Map;
 @Controller
 public class RegistrationController {
 
-    /**
-     * autowired fiel user repo
-     */
     @Autowired
     private UserRepo userRepo;
 
-
-    /**
-     *
-     * @return registration template
-     */
     @GetMapping("/registration")
     public String registration() {
         return "registration";
     }
 
-
-    /**
-     *
-     * @param user - adding user logic param
-     * @param model - model param
-     * @return login template
-     */
     @PostMapping("/registration")
     public String addUser(User user, Map<String, Object> model) {
         User userFromDb = userRepo.findByUsername(user.getUsername());

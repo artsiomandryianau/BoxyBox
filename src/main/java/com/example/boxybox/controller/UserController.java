@@ -25,18 +25,10 @@ import java.util.stream.Collectors;
 @PreAuthorize("hasAuthority('ADMIN')")
 public class UserController {
 
-    /**
-     * autowired param user repo
-     */
+
     @Autowired
     private UserRepo userRepo;
 
-
-    /**
-     *
-     * @param model - model param
-     * @return userList template
-     */
     @GetMapping
     public String userList(Model model) {
         model.addAttribute("users", userRepo.findAll());
@@ -44,13 +36,6 @@ public class UserController {
         return "userList";
     }
 
-
-    /**
-     *
-     * @param user - user edition param
-     * @param model - model param
-     * @return userEdit template
-     */
     @GetMapping("{user}")
     public String userEditForm(@PathVariable User user, Model model) {
         model.addAttribute("user", user);
@@ -59,13 +44,6 @@ public class UserController {
         return "userEdit";
     }
 
-
-    /**
-     *
-     * @param id - id param of delivery
-     * @param model - model param
-     * @return user template
-     */
     @Transactional
     @PostMapping("/delete1/{id}")
     public String deleteUser(@PathVariable("id") Long  id,
@@ -76,14 +54,6 @@ public class UserController {
         return "redirect:/userList";
     }
 
-
-    /**
-     *
-     * @param username - new username
-     * @param form - form param
-     * @param user - user object
-     * @return user template
-     */
     @PostMapping
     public String userSave(
             @RequestParam String username,

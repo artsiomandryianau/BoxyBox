@@ -10,10 +10,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface UserRepo extends JpaRepository<User, Long> {
 
-    /**
-     *
-     * @param username - username of user
-     * @return user bu username
-     */
     User findByUsername(String username);
 }

@@ -23,18 +23,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     DataSource dataSource;
 
-    /**
-     * Autowired bean userService with bisness logic
-     */
     @Autowired
     private UserService userService;
 
 
-    /**
-     *
-     * @param http - secucrity param for access logic of application
-     * @throws Exception - any tyoe of exeption
-     */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -50,12 +42,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll();
     }
 
-
-    /**
-     *
-     * @param auth - AuthenticationManagerBuilder param
-     * @throws Exception - any exception
-     */
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userService)

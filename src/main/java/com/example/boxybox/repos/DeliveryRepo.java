@@ -12,20 +12,8 @@ import java.util.List;
  */
 public interface DeliveryRepo extends CrudRepository<Delivery, Long> {
 
-
-    /**
-     *
-     * @param id - id of delivery
-     * @return delivery
-     */
     Delivery findById(Integer id);
 
-
-    /**
-     *
-     * @param id - id of delivery
-     * @return list of deliveries
-     */
     List<Delivery> deleteById(Integer id);
 
 }
