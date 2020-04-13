@@ -11,7 +11,7 @@ There are 3 types of user:
 
 
 <p align="center">
-  <a href ="##"><img alt="spring_vue" src="https://github.com/artsiomandryianau/BoxyBox/tree/master/images/2.png?raw=true"></a></p>
+  <a href ="##"><img alt="spring_vue" src="https://github.com/artsiomandryianau/BoxyBox/blob/master/images/2.png"></a></p>
 
 Technologies
 ------------
