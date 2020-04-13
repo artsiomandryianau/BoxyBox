@@ -10,6 +10,8 @@ There are 3 types of user:
 - Admin - can see also list of users and edit all the data.
 
 
+<p align="center">
+  <a href ="##"><img alt="spring_vue" src="https://github.com/artsiomandryianau//images/newlogo.jpg?raw=true"></a></p>
 
 Technologies
 ------------
