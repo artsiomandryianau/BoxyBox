@@ -3,12 +3,6 @@ package com.example.boxybox.domain;
 import javax.persistence.*;
 import java.time.LocalDate;
 
-/**
- *
- * @author Artsiom Andryianau
- *
- * @version 1.0
- */
 @Entity
 public class Delivery {
 
