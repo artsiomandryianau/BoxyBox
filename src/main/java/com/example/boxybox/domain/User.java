@@ -7,11 +7,6 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.Set;
 
-/**
- *
- * @author Artsiom Andryianau
- * @version 1.0
- */
 @Entity
 @Table(name="usr")
 public class User implements UserDetails {

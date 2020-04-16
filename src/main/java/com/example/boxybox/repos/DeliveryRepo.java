@@ -5,11 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-/**
- *
- * @author Artsiom Andryianau
- *
- */
 public interface DeliveryRepo extends CrudRepository<Delivery, Long> {
 
     Delivery findById(Integer id);

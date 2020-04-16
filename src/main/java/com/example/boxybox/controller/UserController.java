@@ -15,16 +15,10 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-/**
- *
- * @author Artsiom Andryianau
- *
- */
 @Controller
 @RequestMapping("/user")
 @PreAuthorize("hasAuthority('ADMIN')")
 public class UserController {
-
 
     @Autowired
     private UserRepo userRepo;
@@ -32,7 +26,6 @@ public class UserController {
     @GetMapping
     public String userList(Model model) {
         model.addAttribute("users", userRepo.findAll());
-
         return "userList";
     }
 
@@ -40,7 +33,6 @@ public class UserController {
     public String userEditForm(@PathVariable User user, Model model) {
         model.addAttribute("user", user);
         model.addAttribute("roles", Role.values());
-
         return "userEdit";
     }
 
@@ -48,9 +40,7 @@ public class UserController {
     @PostMapping("/delete1/{id}")
     public String deleteUser(@PathVariable("id") Long  id,
                                  Map<String, Object> model) {
-
         userRepo.deleteById(id);
-
         return "redirect:/userList";
     }
 
@@ -61,21 +51,16 @@ public class UserController {
             @RequestParam("userId") User user
     ) {
         user.setUsername(username);
-
         Set<String> roles = Arrays.stream(Role.values())
                 .map(Role::name)
                 .collect(Collectors.toSet());
-
         user.getRoles().clear();
-
         for (String key : form.keySet()) {
             if (roles.contains(key)) {
                 user.getRoles().add(Role.valueOf(key));
             }
         }
-
         userRepo.save(user);
-
         return "redirect:/user";
     }
 }
