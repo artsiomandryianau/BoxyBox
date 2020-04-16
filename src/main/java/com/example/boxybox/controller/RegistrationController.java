@@ -11,11 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.util.Collections;
 import java.util.Map;
 
-/**
- *
- * @author Artsiom Andryianau
- *
- */
 @Controller
 public class RegistrationController {
 
@@ -30,12 +25,10 @@ public class RegistrationController {
     @PostMapping("/registration")
     public String addUser(User user, Map<String, Object> model) {
         User userFromDb = userRepo.findByUsername(user.getUsername());
-
         if (userFromDb != null) {
             model.put("message", "User exists!");
             return "registration";
         }
-
         user.setActive(true);
         user.setRoles(Collections.singleton(Role.USER));
         userRepo.save(user);
