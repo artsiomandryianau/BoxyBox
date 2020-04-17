@@ -10,15 +10,11 @@ import java.util.Set;
 @Entity
 @Table(name="usr")
 public class User implements UserDetails {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
     private String username;
-
     private String password;
-
     private boolean active;
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
@@ -45,7 +41,6 @@ public class User implements UserDetails {
     public boolean isDeliverer(){
         return  roles.contains(Role.DELIVERER);
     }
-
     @Override
     public boolean isAccountNonExpired() {
         return true;

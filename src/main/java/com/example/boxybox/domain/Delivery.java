@@ -5,13 +5,11 @@ import java.time.LocalDate;
 
 @Entity
 public class Delivery {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     private String dateOfOrdering;
-
 
     private String dateOfDelivery;
 
@@ -24,8 +22,8 @@ public class Delivery {
     private String addressNumberOfBuilding;
 
     private String addressNumberOfApartament;
-
     private Double commodityPrise;
+
 
     private String isDelivered;
 
@@ -40,6 +38,7 @@ public class Delivery {
     }
 
     public Delivery() { }
+
 
     public String getAuthorName(){
         return client !=null ? client.getUsername() : "<none>";
@@ -136,6 +135,7 @@ public class Delivery {
     public void setCommodityPrise(Double commodityPrise) {
         this.commodityPrise = commodityPrise;
     }
+
 
     public Delivery(String dateOfDelivery, String nameOfCommodity, String addressCity, String addressStreet,
                     String addressNumberOfBuilding, String addressNumberOfApartament, Double commodityPrise,  User client) {

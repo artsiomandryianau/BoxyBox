@@ -1,4 +1,4 @@
-package com.example.boxybox.repos;
+package com.example.boxybox.dao;
 
 import com.example.boxybox.domain.Delivery;
 import org.springframework.data.repository.CrudRepository;

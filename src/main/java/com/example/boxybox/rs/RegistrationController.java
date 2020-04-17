@@ -1,8 +1,8 @@
-package com.example.boxybox.controller;
+package com.example.boxybox.rs;
 
 import com.example.boxybox.domain.Role;
 import com.example.boxybox.domain.User;
-import com.example.boxybox.repos.UserRepo;
+import com.example.boxybox.dao.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +13,6 @@ import java.util.Map;
 
 @Controller
 public class RegistrationController {
-
     @Autowired
     private UserRepo userRepo;
 
@@ -25,6 +24,7 @@ public class RegistrationController {
     @PostMapping("/registration")
     public String addUser(User user, Map<String, Object> model) {
         User userFromDb = userRepo.findByUsername(user.getUsername());
+
         if (userFromDb != null) {
             model.put("message", "User exists!");
             return "registration";

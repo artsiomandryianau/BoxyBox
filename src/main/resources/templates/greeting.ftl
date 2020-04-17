@@ -2,5 +2,5 @@
 
 <@c.page>
 <h5>Hello, guest</h5>
-<div>Please, login</div>
+<div>This is juts some notebook i dreamed about!!</div>
 </@c.page>

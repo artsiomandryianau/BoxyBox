@@ -1,15 +1,14 @@
-package com.example.boxybox.controller;
+package com.example.boxybox.rs;
 
 import com.example.boxybox.domain.Role;
 import com.example.boxybox.domain.User;
-import com.example.boxybox.repos.UserRepo;
+import com.example.boxybox.dao.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.transaction.Transactional;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Set;
@@ -19,7 +18,6 @@ import java.util.stream.Collectors;
 @RequestMapping("/user")
 @PreAuthorize("hasAuthority('ADMIN')")
 public class UserController {
-
     @Autowired
     private UserRepo userRepo;
 
@@ -34,14 +32,6 @@ public class UserController {
         model.addAttribute("user", user);
         model.addAttribute("roles", Role.values());
         return "userEdit";
-    }
-
-    @Transactional
-    @PostMapping("/delete1/{id}")
-    public String deleteUser(@PathVariable("id") Long  id,
-                                 Map<String, Object> model) {
-        userRepo.deleteById(id);
-        return "redirect:/userList";
     }
 
     @PostMapping
