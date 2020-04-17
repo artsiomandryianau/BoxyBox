@@ -1,11 +1,9 @@
 package com.example.boxybox.rs;
 
-import com.example.boxybox.domain.Delivery;
-import com.example.boxybox.domain.User;
 import com.example.boxybox.dao.DeliveryRepo;
+import com.example.boxybox.domain.User;
 import com.example.boxybox.service.DeliveryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,10 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.transaction.Transactional;
-import java.io.File;
 import java.io.IOException;
 import java.util.Map;
-import java.util.UUID;
 
 @Controller
 public class MainController {
@@ -38,8 +34,7 @@ public class MainController {
 
     @GetMapping("/main")
     public String main( Model model) {
-        Iterable<Delivery> deliveries = deliveryRepo.findAll();
-        model.addAttribute("deliveries", deliveries);
+        model.addAttribute("deliveries", deliveryRepo.findAll());
         return "main";
     }
 

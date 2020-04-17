@@ -6,10 +6,7 @@ import com.example.boxybox.domain.Delivery;
 import com.example.boxybox.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -23,7 +20,7 @@ public class DeliveryService {
     private DeliveryRepo deliveryRepo;
 
     @Value("${upload.path}")
-    private String uploadpath;
+    private String uploadPath;
 
 
     public void newDelivery(String nameOfCommodity, String dateOfDelivery, String addressCity, String addressStreet,
@@ -33,13 +30,13 @@ public class DeliveryService {
         Delivery delivery = new Delivery(dateOfDelivery, nameOfCommodity, addressCity, addressStreet,
                 addressNumberOfBuilding, addressNumberOfApartament, commodityPriseDouble,user);
         if(file!=null && !file.getOriginalFilename().isEmpty()){
-            File uploadDir = new File(uploadpath);
+            File uploadDir = new File(uploadPath);
             if(!uploadDir.exists()){
                 uploadDir.mkdir();
             }
             String uuidFile = UUID.randomUUID().toString();
             String resultFileName = uuidFile + "." + file.getOriginalFilename();
-            file.transferTo(new File(uploadpath + "/" + resultFileName));
+            file.transferTo(new File(uploadPath + "/" + resultFileName));
             delivery.setFilename(resultFileName);
         }
         deliveryRepo.save(delivery);

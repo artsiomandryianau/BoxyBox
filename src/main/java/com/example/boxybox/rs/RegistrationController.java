@@ -1,8 +1,8 @@
 package com.example.boxybox.rs;
 
+import com.example.boxybox.dao.UserRepo;
 import com.example.boxybox.domain.Role;
 import com.example.boxybox.domain.User;
-import com.example.boxybox.dao.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
